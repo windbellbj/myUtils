@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+/***
+ * 	Github地址：https://github.com/windbellbj/myUtils.git
+ */
 @EnableScheduling
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 public class Application {
