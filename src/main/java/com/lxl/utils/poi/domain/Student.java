@@ -1,18 +1,25 @@
 package com.lxl.utils.poi.domain;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.util.Date;
 
 /**
  * @auther lixinlong
  * @create 2018/5/18
  */
+@ApiModel(description="学生对象student")
 public class Student {
 
     Integer id;
+    @ApiModelProperty(value="用户名",name="name")
     String name;
+    @ApiModelProperty(value="学号",name="stuId")
     String stuId;
     Date createDate;
     Date deleteDate;
+    @ApiModelProperty(value="状态",name="state",required=true)
     Integer status;
 
     public Student(Integer id, String name, String stuId, Date createDate, Date deleteDate, Integer status) {

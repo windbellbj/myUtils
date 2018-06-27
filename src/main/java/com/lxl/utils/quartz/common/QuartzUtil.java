@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
  * @author lixinlong
  *
  */
-@Component
+//@Component
 public class QuartzUtil {
 
     @Scheduled(cron = "0 0/1 * * * ?") // 每分钟执行一次
