@@ -12,6 +12,9 @@ import java.util.Date;
 @ApiModel(description="学生对象student")
 public class Student {
 
+    // 为了能够正确得序列化和反序列化,这个属性必不可少
+    private static final long serialVersionUID = - 1L;
+
     Integer id;
     @ApiModelProperty(value="用户名",name="name")
     String name;
