@@ -26,6 +26,13 @@
 
 	<dependencies>
 
+		<!-- mail 邮件 -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
+
 		<!--quartz定时任务-->
 		<dependency>
 			<groupId>org.quartz-scheduler</groupId>
