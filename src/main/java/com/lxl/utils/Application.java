@@ -20,6 +20,8 @@ import java.util.Properties;
 
 /***
  * 	Github地址：https://github.com/windbellbj/myUtils.git
+ * 	默认用户名：user
+ * 	默认密码：启动后看控制台
  */
 @EnableScheduling
 @EnableCaching
