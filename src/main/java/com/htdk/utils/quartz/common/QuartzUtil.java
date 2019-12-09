@@ -2,13 +2,12 @@ package com.htdk.utils.quartz.common;
 
 /**
  * @desc   Quartz设置项目全局的定时任务
- * @auther lixinlong
- * @create 2018/5/18
+ * @auther xin.long.li
+ * @create 2019/12/04
  */
-import java.util.Date;
-
-import com.htdk.utils.controller.PiUtilsController;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.htdk.utils.ftp.InsertTable;
+import com.htdk.utils.ftp.SqlProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -25,14 +24,21 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class QuartzUtil {
-    @Autowired
-    public PiUtilsController controller;
 
-    @Scheduled(cron = "0 0/1 * * * ?") // 每分钟执行一次
-    public void work() throws Exception {
+    @Value("${driver}")
+    public String driver;
+    @Value("${url}")
+    public String url;
+    @Value("${userName}")
+    public String userName;
+    @Value("${passWord}")
+    public String passWord;
+
+    @Scheduled(cron = "${quartz.one}") // 每分钟执行一次
+    public void work(){
         System.out.println("执行调度任务： xmlToCvs-------------------start:");
-
-        controller.xmlToCvs();
+        SqlProperties properties = new SqlProperties(driver, url, userName, passWord);
+        InsertTable.start(properties);
 
         System.out.println("执行调度任务： xmlToCvs-------------------end:");
 
