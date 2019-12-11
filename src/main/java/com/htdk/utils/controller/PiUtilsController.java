@@ -62,8 +62,12 @@ public class PiUtilsController {
                     }else {
                         LOGGER.error("没有收件人");
                     }
-                    file.delete();
-                    start.delete();
+                    if(!file.isDirectory()){
+                        file.delete();
+                    }
+                    if(!start.isDirectory()){
+                        start.delete();
+                    }
                 }
             }else{
                 LOGGER.info("没有查询到文件");

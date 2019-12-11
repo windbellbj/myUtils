@@ -13,7 +13,7 @@ public class CsvUtils {
 
 
     public static File start(String fileName,String data) throws IOException {
-        FileUtils.writeStringToFile(new File("file/csv/"+fileName.replace(".xml",".csv")), Json2Csv(data));
+        FileUtils.writeStringToFile(new File("file/csv/"+fileName.replace(".xml",".csv")), Json2Csv(data),"GBK");
         return new File("file/csv/"+fileName.replace(".xml",".csv"));
     }
 
