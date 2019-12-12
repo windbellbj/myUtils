@@ -25,19 +25,19 @@ import org.springframework.stereotype.Component;
 @Component
 public class QuartzUtil {
 
-    @Value("${driver}")
+    @Value("${sqlserver.driver}")
     public String driver;
-    @Value("${url}")
+    @Value("${sqlserver.url}")
     public String url;
-    @Value("${userName}")
-    public String userName;
-    @Value("${passWord}")
+    @Value("${sqlserver.user}")
+    public String user;
+    @Value("${sqlserver.passWord}")
     public String passWord;
 
     @Scheduled(cron = "${quartz.one}") // 每分钟执行一次
     public void work(){
         System.out.println("执行调度任务： xmlToCvs-------------------start:");
-        SqlProperties properties = new SqlProperties(driver, url, userName, passWord);
+        SqlProperties properties = new SqlProperties(driver, url, user, passWord);
         InsertTable.start(properties);
 
         System.out.println("执行调度任务： xmlToCvs-------------------end:");

@@ -1,13 +1,6 @@
 package com.htdk.utils.ftp;
 
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.ResourceUtils;
-
-import java.io.File;
-import java.io.FileInputStream;
 import java.sql.*;
-import java.util.Properties;
-
 public final class JDBCUtils {
 
 
