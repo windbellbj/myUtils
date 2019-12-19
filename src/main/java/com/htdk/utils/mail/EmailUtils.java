@@ -21,7 +21,7 @@ public class EmailUtils{
                 }
             }
 //            mail.addTo("jasper.x.jin@htdkgroup.com", "");
-            mail.setSubject("新增物料提醒");
+            mail.setSubject("AM 新增物料");
             mail.setMsg("您有新增的物料信息，请查看附件");
             mail.setStartTLSEnabled(true);
             mail.setSmtpPort(587);

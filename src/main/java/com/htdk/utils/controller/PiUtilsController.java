@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 import static com.htdk.utils.xmlToCsv.XmlHelper.Dom2Map;
+import static org.apache.tomcat.util.http.fileupload.FileUtils.deleteDirectory;
 
 @Controller
 @RequestMapping("/")
@@ -35,9 +38,9 @@ public class PiUtilsController {
 //        String pathDir = "";
         //先连接ftp 拿到文件后转成csv   再发邮件
         FTPUtil ftpUtil = new FTPUtil();
-        File dirFile = new File(pathDir+"/file");
+        File dirFile = new File(pathDir+"/file/");
         if(!dirFile.exists()){ dirFile.mkdirs();}
-        boolean flag = ftpUtil.downloadFiles("/SJM_MATERIAL", pathDir+"/file");
+        boolean flag = ftpUtil.downloadFiles("/SJM_MATERIAL", pathDir+"/file/");
         if(flag){
 
             if(dirFile.listFiles().length>0){
@@ -62,12 +65,8 @@ public class PiUtilsController {
                     }else {
                         LOGGER.error("没有收件人");
                     }
-                    if(!file.isDirectory()){
-                        file.delete();
-                    }
-                    if(!start.isDirectory()){
-                        start.delete();
-                    }
+                    forceDelete(file);
+                    forceDelete(start);
                 }
             }else{
                 LOGGER.info("没有查询到文件");
@@ -100,5 +99,22 @@ public class PiUtilsController {
             }
         }
         return arrayList;
+    }
+
+
+    public static void forceDelete(File file) throws IOException {
+        if (file.isDirectory()) {
+            deleteDirectory(file);
+        } else {
+            boolean filePresent = file.exists();
+            if (!file.delete()) {
+                if (!filePresent){
+                    throw new FileNotFoundException("File does not exist: " + file);
+                }
+                String message =
+                        "Unable to delete file: " + file;
+                throw new IOException(message);
+            }
+        }
     }
 }
