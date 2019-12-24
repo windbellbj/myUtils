@@ -5,12 +5,14 @@ public class SqlProperties {
     public String url;
     public String userName;
     public String passWord;
+	public String urlTMS;
 
-    public SqlProperties(String driver, String url, String userName, String passWord) {
+    public SqlProperties(String driver, String url, String userName, String passWord, String urlTMS) {
         this.driver = driver;
         this.url = url;
         this.userName = userName;
         this.passWord = passWord;
+		this.urlTMS = urlTMS;
     }
 
     public String getDriver() {
@@ -43,5 +45,13 @@ public class SqlProperties {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
+    }
+	
+	public String getUrlTMS() {
+        return urlTMS;
+    }
+
+    public void setUrlTMS(String urlTMS) {
+        this.urlTMS = urlTMS;
     }
 }
